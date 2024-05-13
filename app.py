@@ -2,14 +2,13 @@ from flask import Flask, request, render_template, redirect, jsonify, send_file
 from flask_cors import CORS, cross_origin
 from werkzeug.wrappers import Response
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
-import json
 import os
 import requests
-import base64
 from PIL import Image, ImageDraw
 from roboflow import Roboflow
 from inference_sdk import InferenceHTTPClient
 from io import BytesIO 
+import cv2
 
 app = Flask(__name__)
 CORS(app)

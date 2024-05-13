@@ -22,10 +22,10 @@ CLIENT = InferenceHTTPClient(
     api_key="BIp2z6yDIqPIR1ToFHNf"
 )
 
-# app.wsgi_app = DispatcherMiddleware(
-#     Response('Not Found', status=404),
-#     {'/roboflow': app.wsgi_app}
-# )
+app.wsgi_app = DispatcherMiddleware(
+    Response('Not Found', status=404),
+    {'/roboflow': app.wsgi_app}
+)
 
 @app.route('/')
 @cross_origin()
@@ -132,9 +132,9 @@ def interfer():
           return jsonify({'status': 'error', "headers": {"Access-Control-Allow-Origin"}}), 500
 
 if __name__ == '__main__':
-    #HOST = '0.0.0.0'
-    #PORT = 5000
-    app.run(debug=True)
+    HOST = '0.0.0.0'
+    PORT = 5000
+    app.run(HOST, PORT, debug=True)
     # try:
     #     app.run(HOST, PORT, debug=True)
     # except:

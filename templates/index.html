@@ -1,0 +1,72 @@
+<!--Designed by CodingTuting.Com-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato|Nanum+Gothic:700|Raleway&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./static/css/style.css">
+
+    <title>TumorX</title>
+</head>
+<body>    
+    
+    <header id="topHeader">
+        <nav>
+            <span class="logo"><img width="10%" src="./static/img/logo.png"></span>
+        </nav>
+    </header>
+
+
+    <section>
+        <h1 class="sec-heading">File Upolad Form</h1> 
+    
+        <div class="slider">
+            <div class="col-5 slide-text">
+                 <div class="center">
+                  <div class="form-input">
+                    <label for="file-ip-1">Click Here Upload Image</label>
+                    <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event)">
+                    
+                  </div>
+                </div>                 
+            </div>
+            <div class="col-6 slide-img">
+                <div class="preview">
+                      <img id="file-ip-1-preview" src="./static/img/image.jpeg">
+                </div>
+            </div> 
+        </div>
+    </section>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+    function showPreview(event){
+        var formData = new FormData();
+        if(event.target.files.length > 0){
+ 
+            formData.append("image",event.target.files[0]);
+            let endpoint = "./db";
+            $.ajax({
+                url: endpoint,
+                type: "POST",
+                data: formData,
+                contentType: false,
+                cache: false,
+                processData: false,
+
+                success: function (result) {                
+                let randomNumber = Math.floor(Math.random() * 100000); 
+                var preview = document.getElementById("file-ip-1-preview");
+                preview.src = "./static/trainData/prediction.jpg?v="+randomNumber.toString();
+                },
+            });
+          
+        }
+       } 
+</script>
+</body>
+</html>

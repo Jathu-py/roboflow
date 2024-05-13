@@ -22,10 +22,10 @@ CLIENT = InferenceHTTPClient(
     api_key="BIp2z6yDIqPIR1ToFHNf"
 )
 
-app.wsgi_app = DispatcherMiddleware(
-    Response('Not Found', status=404),
-    {'/roboflow': app.wsgi_app}
-)
+# app.wsgi_app = DispatcherMiddleware(
+#     Response('Not Found', status=404),
+#     {'/roboflow': app.wsgi_app}
+# )
 
 @app.route('/')
 @cross_origin()

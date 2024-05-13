@@ -6,3 +6,4 @@ requests
 jinja2
 inference-sdk
 opencv-python
+gunicorn

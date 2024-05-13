@@ -5,3 +5,4 @@ Werkzeug
 requests
 jinja2
 inference-sdk
+cv2
